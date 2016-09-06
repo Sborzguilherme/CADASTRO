@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 import modelo.Problema;
-
 /**
  *
  * @author Micro Solution
@@ -34,8 +33,12 @@ public class ProblemaVisao {
         do{
         try{
             data = formatadorData.parse(entrada.nextLine());   
-            
-            break;
+            if(data.before(new Date())){
+                 break;
+            }else{
+                System.out.println("Data Inválida");
+            }
+           
         }catch(Exception e){
             System.out.println("Data invalida. Digite Novamente");
         }
@@ -51,7 +54,7 @@ public class ProblemaVisao {
 
         ArrayList<Problema> lista = ProblemaControle.obterListaProblemas();
         
-        Date data = new Date();
+        //Date data = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         
         for(int i=0; i<lista.size();i++){
@@ -59,25 +62,37 @@ public class ProblemaVisao {
             System.out.println(lista.get(i).getCodigo()+"\t"+lista.get(i).getDescricao()+"\t"+lista.get(i).getSituacao()+"\t"+sdf.format(lista.get(i).getData()));
         }
        System.out.println(" ");
-       System.out.println("Digite M para voltar ao Menu");
+       System.out.println("Digite 0 para voltar ao Menu");
        System.out.println("Digite o código do problema para mudar a situação para resolvido");
        
         Scanner entrada = new Scanner(System.in);
-        String valorDigitado = entrada.nextLine();
+        int valorDigitado = 0;
+        do{
+        int teste=0;
+            do{
+                try{
+                    valorDigitado = Integer.parseInt(entrada.nextLine());
+                    teste =1;
+                }catch(Exception e){
+                    System.out.println("Não foi possível converter para inteiro");
+                }
+            }while(teste ==0);
         
-        if(valorDigitado.equals("M")){
+        if(valorDigitado == 0){
             MenuPrincipal.exibeMenu();
         }else{
-            int op = Integer.parseInt(valorDigitado);
-            Problema buscaCodigo = ProblemaControle.obterProblemaPeloCodigo(op);
-            if(buscaCodigo == null){
-                System.out.println("Codigo do problema não encontrado");
+            Problema buscaCodigo = ProblemaControle.obterProblemaPeloCodigo(valorDigitado);
+            if(buscaCodigo != null){
+                ProblemaControle.mudaSituacao(valorDigitado);
                 MenuPrincipal.exibeMenu();
             }else{
-                ProblemaControle.mudaSituacao(op);
-                MenuPrincipal.exibeMenu();
+                System.out.println("Codigo do problema não encontrado");
             }
         }
-    }
+        }while(true);
     
+    }
 }
+
+    
+

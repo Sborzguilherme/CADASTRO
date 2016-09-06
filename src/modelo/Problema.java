@@ -16,24 +16,23 @@ import java.util.Date;
 public class Problema {
 
     /**
-     * @return the codigo
+     * @return the code
      */
-    public int getCodigo() {
-        return codigo;
-    }
+    
 
     /**
-     * @param aCodigo the codigo to set
+     * @return the codigo
      */
-    public void setCodigo(int Codigo) {
-        codigo = Codigo;
-    }
+   
     private String descricao;
     private String situacao;
     private Date data;
     private int codigo;
 
-    /**
+   
+    
+    
+     /**
      * @return the descricao
      */
     public String getDescricao() {
@@ -75,7 +74,6 @@ public class Problema {
         }
         return null;
     }
-
     /**
      * @return the situacao
      */
@@ -88,6 +86,20 @@ public class Problema {
      */
     public void setSituacao(String situacao) {
         this.situacao = situacao;
+    }
+
+    /**
+     * @return the codigo
+     */
+    public int getCodigo() {
+        return codigo;
+    }
+
+    /**
+     * @param codigo the codigo to set
+     */
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
     
 }

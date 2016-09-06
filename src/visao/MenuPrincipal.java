@@ -18,17 +18,21 @@ public class MenuPrincipal {
         System.out.println("= = = MENU PRINCIPAL = = =");
         System.out.println("Digite V para visualizar os problemas reportados");
         System.out.println("Digite R para reportar um novo problema");
-        System.out.println("Outro valor para Sair");
+        System.out.println("Digite S para Sair");
         
         Scanner entrada = new Scanner(System.in);
         char opcao = 0;
         
-         try{
+        do{
+            
             opcao = entrada.nextLine().toUpperCase().charAt(0);
             System.out.println("OPCAO >> "+opcao);
-         }catch(Exception e){
-             System.out.println("Digite um valor valido");
-         }
+            
+            if(opcao != 'V' && opcao != 'R' && opcao !='S'){
+                System.out.println("VALOR INVÁLIDO");
+            }else { break;}
+        
+         }while(true);
          
          if(opcao == 'V'){
              ProblemaVisao.exibirListaProblemas();
