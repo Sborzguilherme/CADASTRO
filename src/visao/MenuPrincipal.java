@@ -24,7 +24,6 @@ public class MenuPrincipal {
         char opcao = 0;
         
         do{
-            
             opcao = entrada.nextLine().toUpperCase().charAt(0);
             System.out.println("OPCAO >> "+opcao);
             

@@ -14,24 +14,12 @@ import java.util.Date;
  * @author Micro Solution
  */
 public class Problema {
-
-    /**
-     * @return the code
-     */
-    
-
-    /**
-     * @return the codigo
-     */
    
     private String descricao;
     private String situacao;
     private Date data;
     private int codigo;
 
-   
-    
-    
      /**
      * @return the descricao
      */
@@ -100,6 +88,5 @@ public class Problema {
      */
     public void setCodigo(int codigo) {
         this.codigo = codigo;
-    }
-    
+    }    
 }

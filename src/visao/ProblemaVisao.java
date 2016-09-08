@@ -14,7 +14,6 @@ import java.util.Scanner;
 import modelo.Problema;
 /**
  *
- * @author Micro Solution
  */
 public class ProblemaVisao {
     public static void exibeFormularioCadastroProblema() throws IOException{
@@ -36,7 +35,7 @@ public class ProblemaVisao {
             if(data.before(new Date())){
                  break;
             }else{
-                System.out.println("Data Inválida");
+                System.out.println("Data Inválida! Digite Novamente");
             }
            
         }catch(Exception e){
