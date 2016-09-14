@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 import modelo.Problema;
+import modelo.ProblemaDAO;
 /**
  *
  */
@@ -57,7 +58,6 @@ public class ProblemaVisao {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         
         for(int i=0; i<lista.size();i++){
-
             System.out.println(lista.get(i).getCodigo()+"\t"+lista.get(i).getDescricao()+"\t"+lista.get(i).getSituacao()+"\t"+sdf.format(lista.get(i).getData()));
         }
        System.out.println(" ");
@@ -82,7 +82,7 @@ public class ProblemaVisao {
         }else{
             Problema buscaCodigo = ProblemaControle.obterProblemaPeloCodigo(valorDigitado);
             if(buscaCodigo != null){
-                ProblemaControle.mudaSituacao(valorDigitado);
+                ProblemaDAO.mudaSituacao(valorDigitado);
                 MenuPrincipal.exibeMenu();
             }else{
                 System.out.println("Codigo do problema não encontrado");

@@ -20,8 +20,8 @@ import visao.MenuPrincipal;
  */
 public class Principal {
     public static void main(String[] args) throws IOException {
-        File arquivo = new File("teste.txt");
-        try{
+//        File arquivo = new File("teste.txt");
+//        try{
               //java 7-
 //            Scanner entrada = new Scanner(arquivo);
 //            int linhaAtual =0;
@@ -43,26 +43,26 @@ public class Principal {
 //        escritor.println("JAVA");
 //        escritor.close();
             //java 7+ escrita
-            Path caminhoArquivo = Paths.get("teste2.txt");
-            ArrayList<String> listaLinhas = new ArrayList();
-            listaLinhas.add("Ola");
-            listaLinhas.add("Mundo");
-            listaLinhas.add("Cruel");
-            Files.write(caminhoArquivo, listaLinhas,StandardOpenOption.APPEND);// sem colocar o 3° parametro o arquivo inicia do zero
-                                                                               // este 3° parametro concatena as string passadas com o que ja esta no arquivo 
-            
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-        
-        
-        
-        if(arquivo.exists()){
-            System.out.println("Existe");
-        
-        }else{
-            System.out.println("Não Existe");
-        }
-       // MenuPrincipal.exibeMenu();
+//            Path caminhoArquivo = Paths.get("teste2.txt");
+//            ArrayList<String> listaLinhas = new ArrayList();
+//            listaLinhas.add("Ola");
+//            listaLinhas.add("Mundo");
+//            listaLinhas.add("Cruel");
+//            Files.write(caminhoArquivo, listaLinhas,StandardOpenOption.APPEND);// sem colocar o 3° parametro o arquivo inicia do zero
+//                                                                               // este 3° parametro concatena as string passadas com o que ja esta no arquivo 
+//            
+//        }catch(Exception e){
+//            System.out.println(e.getMessage());
+//        }
+//        
+//        
+//        
+//        if(arquivo.exists()){
+//            System.out.println("Existe");
+//        
+//        }else{
+//            System.out.println("Não Existe");
+//        }
+       MenuPrincipal.exibeMenu();
     }
 }

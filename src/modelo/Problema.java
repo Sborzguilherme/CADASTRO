@@ -48,14 +48,14 @@ public class Problema {
         this.data = data;
     }
     
-    public void salvar(){
-        MeioArmazenamento.LISTA_DE_PROBLEMAS.add(this);
-    }
-    public static ArrayList<Problema> obterLista(){
-        return MeioArmazenamento.LISTA_DE_PROBLEMAS;
-    }
+//    public void salvar(){
+//        MeioArmazenamento.LISTA_DE_PROBLEMAS.add(this);
+//    }
+//    public static ArrayList<Problema> obterLista(){
+//        return MeioArmazenamento.LISTA_DE_PROBLEMAS;
+//    }
     public static Problema obterPeloCodigo(int codigo){
-        for(Problema obj : Problema.obterLista()){
+        for(Problema obj : ProblemaDAO.obterLista()){
             if(obj.getCodigo() == codigo){
                 return obj;
             }

@@ -9,6 +9,7 @@ import armazenamento.MeioArmazenamento;
 import java.util.ArrayList;
 import java.util.Date;
 import modelo.Problema;
+import modelo.ProblemaDAO;
 
 
 public class ProblemaControle {
@@ -19,16 +20,14 @@ public class ProblemaControle {
         objetoProblema.setData(data);
         objetoProblema.setDescricao(descricao);
         objetoProblema.setSituacao("ABERTO   ");
-        objetoProblema.setCodigo(MeioArmazenamento.LISTA_DE_PROBLEMAS.size()+1);
-        objetoProblema.salvar();
+        objetoProblema.setCodigo(ProblemaDAO.contaObjetos()+1);
+        ProblemaDAO.salvar(objetoProblema,objetoProblema.getSituacao());
     }
     public static ArrayList<Problema> obterListaProblemas(){
-        return Problema.obterLista();
+        return ProblemaDAO.obterLista();
     }
     public static Problema obterProblemaPeloCodigo(int codigo){
         return  Problema.obterPeloCodigo(codigo);
     }
-    public static void mudaSituacao(int op){
-        Problema.obterPeloCodigo(op).setSituacao("RESOLVIDO");
-    }
+    
 }
