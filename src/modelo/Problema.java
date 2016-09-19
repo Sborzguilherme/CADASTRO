@@ -55,7 +55,7 @@ public class Problema {
 //        return MeioArmazenamento.LISTA_DE_PROBLEMAS;
 //    }
     public static Problema obterPeloCodigo(int codigo){
-        for(Problema obj : ProblemaDAO.obterLista()){
+        for(Problema obj : ProblemaDAO.obterLista("Auxiliar.txt")){
             if(obj.getCodigo() == codigo){
                 return obj;
             }

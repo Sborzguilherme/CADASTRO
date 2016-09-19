@@ -7,6 +7,7 @@ package visao;
 
 import controle.ProblemaControle;
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,7 +18,7 @@ import modelo.ProblemaDAO;
  *
  */
 public class ProblemaVisao {
-    public static void exibeFormularioCadastroProblema() throws IOException{
+    public static void exibeFormularioCadastroProblema() throws IOException, ParseException{
         String descricao;
         Date data;
         Scanner entrada = new Scanner(System.in);
@@ -48,11 +49,11 @@ public class ProblemaVisao {
         MenuPrincipal.exibeMenu();
         
     }
-    public static void exibirListaProblemas() throws IOException{
+    public static void exibirListaProblemas() throws IOException, ParseException{
         System.out.println("--- LISTA DE PROBLEMAS REPORTADOS ---");
         System.out.println("CODIGO \t DESCRICAO \t SITUACAO \t DATA");
 
-        ArrayList<Problema> lista = ProblemaControle.obterListaProblemas();
+        ArrayList<Problema> lista = ProblemaControle.obterListaProblemas("Problema.txt");
         
         //Date data = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -80,13 +81,16 @@ public class ProblemaVisao {
         if(valorDigitado == 0){
             MenuPrincipal.exibeMenu();
         }else{
-            Problema buscaCodigo = ProblemaControle.obterProblemaPeloCodigo(valorDigitado);
-            if(buscaCodigo != null){
-                ProblemaDAO.mudaSituacao(valorDigitado);
-                MenuPrincipal.exibeMenu();
-            }else{
-                System.out.println("Codigo do problema não encontrado");
-            }
+            
+            ProblemaDAO.mudaSituacao(valorDigitado);
+            MenuPrincipal.exibeMenu();
+//            Problema buscaCodigo = ProblemaControle.obterProblemaPeloCodigo(valorDigitado);
+//            if(buscaCodigo != null){
+//                ProblemaDAO.mudaSituacao(valorDigitado);
+//                MenuPrincipal.exibeMenu();
+//            }else{
+//                System.out.println("Codigo do problema não encontrado");
+//            }
         }
         }while(true);
     

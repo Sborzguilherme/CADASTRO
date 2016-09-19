@@ -6,6 +6,7 @@
 package visao;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Scanner;
 
 /**
@@ -13,7 +14,7 @@ import java.util.Scanner;
  * @author Micro Solution
  */
 public class MenuPrincipal {
-    public static void exibeMenu() throws IOException {
+    public static void exibeMenu() throws IOException, ParseException {
         do{   
         System.out.println("= = = MENU PRINCIPAL = = =");
         System.out.println("Digite V para visualizar os problemas reportados");

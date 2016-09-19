@@ -21,10 +21,10 @@ public class ProblemaControle {
         objetoProblema.setDescricao(descricao);
         objetoProblema.setSituacao("ABERTO   ");
         objetoProblema.setCodigo(ProblemaDAO.contaObjetos()+1);
-        ProblemaDAO.salvar(objetoProblema,objetoProblema.getSituacao());
+        ProblemaDAO.salvar(objetoProblema,"Problema.txt");
     }
-    public static ArrayList<Problema> obterListaProblemas(){
-        return ProblemaDAO.obterLista();
+    public static ArrayList<Problema> obterListaProblemas(String local){
+        return ProblemaDAO.obterLista(local);
     }
     public static Problema obterProblemaPeloCodigo(int codigo){
         return  Problema.obterPeloCodigo(codigo);
