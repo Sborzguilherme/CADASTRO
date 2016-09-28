@@ -23,6 +23,11 @@ public class Problema {
      /**
      * @return the descricao
      */
+    @Override
+    public String toString() {
+        return this.descricao+" - "+this.situacao;
+    }
+    
     public String getDescricao() {
         return descricao;
     }

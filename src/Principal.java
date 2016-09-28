@@ -6,6 +6,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import visao.MenuPrincipal;
 
 /*
@@ -18,8 +23,8 @@ import visao.MenuPrincipal;
  *
  * @author Micro Solution
  */
-public class Principal {
-    public static void main(String[] args) throws IOException {
+public class Principal extends Application {
+    public static void main(String[] args){
 //        File arquivo = new File("teste.txt");
 //        try{
               //java 7-
@@ -63,6 +68,15 @@ public class Principal {
 //        }else{
 //            System.out.println("Não Existe");
 //        }
-       MenuPrincipal.exibeMenu();
+       //MenuPrincipal.exibeMenu();
+       launch(args);
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        Pane principal = FXMLLoader.load(getClass().getResource("visao/MenuTelaProblema.fxml"));
+        Scene cena = new Scene(principal);
+        stage.setScene(cena); // COLOCA A CENA NO PALCO
+        stage.show();
     }
 }

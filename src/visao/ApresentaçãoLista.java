@@ -8,48 +8,62 @@ package visao;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import modelo.Problema;
+import modelo.ProblemaDAO;
 
 /**
  *
  * @author Micro Solution
  */
-public class MenuPrincipal implements Initializable {
+public class ApresentaçãoLista implements Initializable  {
 
+    @FXML
+    private ComboBox<Problema> txtListaProblemas;
+    private ObservableList<Problema> listaProblemasDados = FXCollections.observableArrayList();
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-       
+        for(int i=0; i< ProblemaDAO.obterLista("Problema.txt").size();i++){
+            listaProblemasDados.add(ProblemaDAO.obterLista("Problema.txt").get(i));
+        }
+        txtListaProblemas.setItems(listaProblemasDados);
     }
-    public void abrirTelaCadastroProblema(ActionEvent e) throws IOException{
+    public void onClickSalvar(ActionEvent e) throws IOException{
+    
+        int opcao = txtListaProblemas.getValue().getCodigo();
+        ProblemaDAO.mudaSituacao(opcao);
         
         Button quemFoi =(Button) e.getSource();
         Scene cenaAtual = quemFoi.getScene();
         Stage palcoAtual =(Stage) cenaAtual.getWindow();
 
-        Pane elementoPrincipalDoNovoPalco = FXMLLoader.load(getClass().getResource("ProblemaCadastro.fxml"));
+        Pane elementoPrincipalDoNovoPalco = FXMLLoader.load(getClass().getResource("MenuTelaProblema.fxml"));
         Scene novaCena = new Scene(elementoPrincipalDoNovoPalco);
         palcoAtual.setScene(novaCena);
         palcoAtual.show();
-    
     }
+    public void voltaMenu(ActionEvent e) throws IOException{
     
-    public void abrirListaProblemas(ActionEvent e) throws IOException{
         Button quemFoi =(Button) e.getSource();
         Scene cenaAtual = quemFoi.getScene();
         Stage palcoAtual =(Stage) cenaAtual.getWindow();
-
-        Pane elementoPrincipalDoNovoPalco = FXMLLoader.load(getClass().getResource("ListaProblemas.fxml"));
+        
+        // RETORNO AO MENU
+        Pane elementoPrincipalDoNovoPalco = FXMLLoader.load(getClass().getResource("MenuTelaProblema.fxml"));
         Scene novaCena = new Scene(elementoPrincipalDoNovoPalco);
         palcoAtual.setScene(novaCena);
         palcoAtual.show();
-    
-    
-    }
+    } 
     
 }
