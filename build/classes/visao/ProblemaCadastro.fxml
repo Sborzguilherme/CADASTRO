@@ -9,10 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visao.ProblemaVisao">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visao.ProblemaVisao">
    <children>
-      <Label layoutX="37.0" layoutY="27.0" text="CADASTRO DE PROBLEMA">
+      <Label layoutX="62.0" layoutY="27.0" text="CADASTRO DE PROBLEMA">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -41,6 +40,7 @@
             </DatePicker>
          </children>
       </VBox>
-      <Button layoutX="124.0" layoutY="254.0" mnemonicParsing="false" onAction="#onClickSalvar" text="SALVAR" />
+      <Button layoutX="192.0" layoutY="297.0" mnemonicParsing="false" onAction="#onClickSalvar" text="SALVAR" />
+      <Button layoutX="70.0" layoutY="297.0" mnemonicParsing="false" onAction="#onClickVoltar" text="VOLTAR" />
    </children>
 </AnchorPane>

@@ -52,4 +52,15 @@ public class MenuPrincipal implements Initializable {
     
     }
     
+    public void alterarSituacaoProblema(ActionEvent e) throws IOException{
+        Button quemFoi =(Button) e.getSource();
+        Scene cenaAtual = quemFoi.getScene();
+        Stage palcoAtual =(Stage) cenaAtual.getWindow();
+
+        Pane elementoPrincipalDoNovoPalco = FXMLLoader.load(getClass().getResource("AlteraSituacaoProblema.fxml"));
+        Scene novaCena = new Scene(elementoPrincipalDoNovoPalco);
+        palcoAtual.setScene(novaCena);
+        palcoAtual.show();
+    
+    }
 }

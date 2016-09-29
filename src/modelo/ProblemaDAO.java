@@ -5,23 +5,15 @@
  */
 package modelo;
 
-import visao.MenuPrincipal;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
 import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -59,6 +51,38 @@ public class ProblemaDAO {
         return retorno;
         
     }
+    public static ArrayList<Problema> obterListaAbertos(String local){ //   REPETIÇÃO METODO obterListaArquivos
+        //return MeioArmazenamento.MEIO_ARMAZENAMENTO_EQUIPAMENTOS;
+        ArrayList<Problema> retorno = new ArrayList<>();
+        try{
+            
+            Path caminhoArquivo = Paths.get(local);
+            if(caminhoArquivo.toFile().exists()){
+                for(String linhaAtual : Files.readAllLines(caminhoArquivo)){
+                String[] dado = linhaAtual.split(";");
+                Problema objeto = new Problema();
+                SimpleDateFormat formatadorData = new SimpleDateFormat("dd/MM/yyyy");
+                objeto.setCodigo(Integer.parseInt(dado[0]));
+                objeto.setDescricao(dado[1]);
+                objeto.setData(formatadorData.parse(dado[2]));
+                objeto.setSituacao(dado[3]);
+                
+                if(objeto.getSituacao().equals("ABERTO")){
+                    retorno.add(objeto);
+                
+                }
+                
+            }
+            
+            }
+
+            }catch(Exception e){ // NECESSARIO MUDAR POR CAUSA DA TRANSFORMAÇÃO DA DATA
+                Logger.getLogger(Problema.class.getName()).log(Level.SEVERE, null, e);
+            }
+        return retorno;
+        
+    }
+    
     public static void salvar(Problema paraSalvar, String local){
         //MeioArmazenamento.MEIO_ARMAZENAMENTO_EQUIPAMENTOS.add(this);
          

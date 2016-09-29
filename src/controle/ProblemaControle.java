@@ -5,7 +5,6 @@
  */
 package controle;
 
-import armazenamento.MeioArmazenamento;
 import java.util.ArrayList;
 import java.util.Date;
 import modelo.Problema;
@@ -19,7 +18,7 @@ public class ProblemaControle {
         
         objetoProblema.setData(data);
         objetoProblema.setDescricao(descricao);
-        objetoProblema.setSituacao("ABERTO   ");
+        objetoProblema.setSituacao("ABERTO");
         objetoProblema.setCodigo(ProblemaDAO.contaObjetos()+1);
         ProblemaDAO.salvar(objetoProblema,"Problema.txt");
     }

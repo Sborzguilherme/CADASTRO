@@ -5,7 +5,6 @@
  */
 package modelo;
 
-import armazenamento.MeioArmazenamento;
 import java.util.ArrayList;
 import java.util.Date;
 
